@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+  <context id="Mysql" targetRuntime="MyBatis3" defaultModelType="flat">
+
+    <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+      <property name="mappers" value="tk.mybatis.mapper.common.Mapper"/>
+      <!-- caseSensitive默认false，当数据库表名区分大小写时，可以将该属性设置为true -->
+      <property name="caseSensitive" value="true"/>
+    </plugin>
+    
+         <!-- 生成 JavaBean 对象重写 toString方法 -->
+     <plugin type="org.mybatis.generator.plugins.ToStringPlugin" />
+
+     <!-- 生成 JavaBean 对象继承 Serializable 类 -->
+     <plugin type="org.mybatis.generator.plugins.SerializablePlugin" />
+     
+      <!-- 不生成注释 -->
+     <commentGenerator>
+			<property name="suppressAllComments" value="true" />
+	</commentGenerator>
+
+    <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                    connectionURL="jdbc:mysql://59.110.218.138:3306/amr"
+                    userId="root"
+                    password="wujin">
+    </jdbcConnection>
+
+      <!--   <javaModelGenerator targetPackage="com.atguigu.crud.bean" targetProject=".\src\main\java"/>
+        
+ -->         
+        <javaModelGenerator targetPackage="com.woyuno.vo" targetProject=".\src\main\java"/>
+
+        <sqlMapGenerator targetPackage="mapper" targetProject=".\src\main\java"/>
+
+        <javaClientGenerator targetPackage="com.woyuno.mapper" targetProject=".\src\main\java" type="XMLMAPPER"/>
+
+    <table tableName="%" >
+   		 <generatedKey column="id" sqlStatement="Mysql" identity="true"/>
+    </table>
+  </context>
+</generatorConfiguration>
